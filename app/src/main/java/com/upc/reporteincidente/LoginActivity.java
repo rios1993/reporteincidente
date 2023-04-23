@@ -55,9 +55,9 @@ public class LoginActivity extends AppCompatActivity {
             String txtPassEncriptado = md5(string_to_be_converted_to_MD5);
             //System.out.println(txtPassEncriptado);
 
-            String criterio = txtPassEncriptado;
-            //String url = "https://upcmovilestf.zonaexperimental.com/index.php/login/"+criterio;
-            String url = "https://upcmovilestf.zonaexperimental.com/index.php/productos";
+            String criterio = txtUser + "/" + txtPassEncriptado;
+            String url = "https://upcmovilestf.zonaexperimental.com/index.php/login/" + criterio;
+            //String url = "https://upcmovilestf.zonaexperimental.com/index.php/productos";
 
             StringRequest peticion = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
@@ -66,6 +66,8 @@ public class LoginActivity extends AppCompatActivity {
                         JSONArray jsonArray = new JSONArray(response);
                         if (jsonArray.length()>0){
                             Toast.makeText(LoginActivity.this, "Exito", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(view.getContext(),MainActivity.class);
+                            startActivity(intent);
                         }else{
                             Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
                         }
