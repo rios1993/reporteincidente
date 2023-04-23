@@ -65,8 +65,27 @@ public class LoginActivity extends AppCompatActivity {
                     try {
                         JSONArray jsonArray = new JSONArray(response);
                         if (jsonArray.length()>0){
+                            JSONObject object = jsonArray.getJSONObject(0);
+                            String globalUsuario = object.getString("username");
+                            String globalFullName = object.getString("fullname");
+                            String globalPrivilegio = object.getString("privilegio");
+
+
                             Toast.makeText(LoginActivity.this, "Exito", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(view.getContext(),MainActivity.class);
+                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+
+                            //Bundle bundle = new Bundle();
+
+                            //bundle.putString("usuario", globalUsuario);
+                            //bundle.putString("fullname",globalFullName);
+                            //bundle.putString("privilegio",globalPrivilegio);
+
+                            //intent.putExtras(bundle);
+
+                            intent.putExtra("usuario",globalUsuario);
+                            intent.putExtra("fullname",globalFullName);
+                            intent.putExtra("privilegio",globalPrivilegio);
+
                             startActivity(intent);
                         }else{
                             Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
