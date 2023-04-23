@@ -28,11 +28,14 @@ public class MainActivity extends AppCompatActivity {
         String fullname = intent.getStringExtra("fullname");
         String privilegio = intent.getStringExtra("privilegio");
 
+        ((Global) this.getApplication()).setGlbUsername(usuario);
+        ((Global) this.getApplication()).setGlbPrivilegio(privilegio);
+
         txtFullname.setText(fullname);
 
         btnReportar.setOnClickListener(view ->
         {
-            Intent intentP = new Intent(this, PeligroActivity.class);
+            Intent intentP = new Intent(this, ListarActivity.class);
             startActivity(intentP);
         });
     }
