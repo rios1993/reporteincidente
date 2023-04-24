@@ -18,10 +18,10 @@ import java.util.List;
 public class AdaptadorPersonalizadoEvi extends RecyclerView.Adapter<AdaptadorPersonalizadoEvi.MiViewHolder> {
 
     private Context context;
-    private List<Reporte> listaReportes = new ArrayList<>();
+    private List<Reportes> listaReportes = new ArrayList<>();
 
 
-    public AdaptadorPersonalizadoEvi(Context context, List<Reporte> listaReportes){
+    public AdaptadorPersonalizadoEvi(Context context, List<Reportes> listaReportes){
         this.context = context;
         this.listaReportes = listaReportes;
     }
@@ -42,20 +42,25 @@ public class AdaptadorPersonalizadoEvi extends RecyclerView.Adapter<AdaptadorPer
         holder.filaReporteEvi.setText(listaReportes.get(position).getId_reporte()+"");
         holder.filaUsuarioEvi.setText(listaReportes.get(position).getUsername()+"");
         holder.filaFechayHoraEvi.setText(listaReportes.get(position).getFecha_hora_creacion()+"");
-        holder.filaEstadoEvi.setText(listaReportes.get(position).getId_estado()+"");
+        holder.filaEstadoEvi.setText(listaReportes.get(position).getDescripcion()+"");
         holder.filaDetalleEvi.setText(listaReportes.get(position).getDetalle()+"");
 
 
         holder.filaVerEvi.setOnClickListener(view -> {
-            Intent intent = new Intent(context,PeligroverActivity.class);
+            Intent intent = new Intent(context,EvidenciaActivity.class);
             intent.putExtra("id_reporte", listaReportes.get(position).getId_reporte()+"");
             intent.putExtra("detalle", listaReportes.get(position).getDetalle()+"");
             intent.putExtra("usuario", listaReportes.get(position).getUsername()+"");
             intent.putExtra("fecha_hora_creacion", listaReportes.get(position).getFecha_hora_creacion()+"");
-            intent.putExtra("estado", listaReportes.get(position).getId_estado()+"");
+            intent.putExtra("estado", listaReportes.get(position).getDescripcion()+"");
             intent.putExtra("latitud",listaReportes.get(position).getLatitud()+"");
             intent.putExtra("longitud",listaReportes.get(position).getLongitud()+"");
             intent.putExtra("foto",listaReportes.get(position).getFoto()+"");
+            intent.putExtra("acciones",listaReportes.get(position).getAcciones()+"");
+            intent.putExtra("foto_evidencia",listaReportes.get(position).getFoto_evidencia()+"");
+            intent.putExtra("fecha_enproceso",listaReportes.get(position).getFecha_enproceso()+"");
+            intent.putExtra("fecha_atendido",listaReportes.get(position).getFecha_atendido()+"");
+            intent.putExtra("username_evidencia",listaReportes.get(position).getUsername_evidencia()+"");
 
             context.startActivity(intent);
         });
@@ -70,16 +75,16 @@ public class AdaptadorPersonalizadoEvi extends RecyclerView.Adapter<AdaptadorPer
         //return 0;
     }
 
-    private void mostrarMensaje(String mensaje){
-        AlertDialog.Builder ventana = new AlertDialog.Builder(context);
-        ventana.setTitle("Mensaje Informativo");
-        ventana.setMessage(mensaje);
-        ventana.setPositiveButton("Aceptar",(dialogInterface, i) -> {
-            Intent intent = new Intent(context,ListarActivity.class);
-            context.startActivity(intent);
-        });
-        ventana.create().show();
-    }
+    //private void mostrarMensaje(String mensaje){
+    //    AlertDialog.Builder ventana = new AlertDialog.Builder(context);
+    //    ventana.setTitle("Mensaje Informativo");
+    //    ventana.setMessage(mensaje);
+    //    ventana.setPositiveButton("Aceptar",(dialogInterface, i) -> {
+    //        Intent intent = new Intent(context,ListarActivity.class);
+    //        context.startActivity(intent);
+    //    });
+    //    ventana.create().show();
+    //}
 
     public class MiViewHolder extends RecyclerView.ViewHolder {
         TextView filaReporteEvi, filaDetalleEvi, filaUsuarioEvi, filaFechayHoraEvi, filaEstadoEvi;

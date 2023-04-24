@@ -40,6 +40,8 @@ public class PeligroActivity extends AppCompatActivity {
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +52,8 @@ public class PeligroActivity extends AppCompatActivity {
         //Toast.makeText(this, Globaluser, Toast.LENGTH_SHORT).show();
 
         asignarReferencias();
+
+
     }
 
     private void mostrarMensaje(String mensaje){
@@ -62,6 +66,8 @@ public class PeligroActivity extends AppCompatActivity {
         });
         ventana.create().show();
     }
+
+
 
     private boolean validarDatos(){
         String detalle = txtPeligro.getText().toString();

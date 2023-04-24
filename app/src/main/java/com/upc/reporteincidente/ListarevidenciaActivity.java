@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -47,11 +46,11 @@ public class ListarevidenciaActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 try{
                     JSONArray jsonArray = new JSONArray(response);
-                    List<Reporte> listaReportes = new ArrayList<>();
+                    List<Reportes> listaReportes = new ArrayList<>();
                     for(int i=0; i<jsonArray.length(); i++){
                         JSONObject object = jsonArray.getJSONObject(i);
 
-                        listaReportes.add(new Reporte (
+                        listaReportes.add(new Reportes (
                                 object.getInt("id_reporte"),
                                 object.getString("detalle"),
                                 object.getString("foto"),
@@ -61,7 +60,12 @@ public class ListarevidenciaActivity extends AppCompatActivity {
                                 object.getString("descripcion"),
                                 object.getInt("id_evidencia"),
                                 object.getString("username"),
-                                object.getString("fecha_hora_creacion")));
+                                object.getString("fecha_hora_creacion"),
+                                object.getString("acciones"),
+                                object.getString("foto_evidencia"),
+                                object.getString("fecha_enproceso"),
+                                object.getString("fecha_atendido"),
+                                object.getString("username_evidencia")));
 
                     }
                     AdaptadorPersonalizadoEvi adaptador;

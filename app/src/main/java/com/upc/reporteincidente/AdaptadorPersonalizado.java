@@ -18,10 +18,10 @@ import java.util.List;
 public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPersonalizado.MiViewHolder> {
 
     private Context context;
-    private List<Reporte> listaReportes = new ArrayList<>();
+    private List<Reportes> listaReportes = new ArrayList<>();
 
 
-    public AdaptadorPersonalizado(Context context, List<Reporte> listaReportes){
+    public AdaptadorPersonalizado(Context context, List<Reportes> listaReportes){
         this.context = context;
         this.listaReportes = listaReportes;
     }
@@ -42,7 +42,8 @@ public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPerson
         holder.filaReporte.setText(listaReportes.get(position).getId_reporte()+"");
         holder.filaUsuario.setText(listaReportes.get(position).getUsername()+"");
         holder.filaFechayHora.setText(listaReportes.get(position).getFecha_hora_creacion()+"");
-        holder.filaEstado.setText(listaReportes.get(position).getId_estado()+"");
+        //holder.filaEstado.setText(listaReportes.get(position).getId_estado()+"");
+        holder.filaEstado.setText(listaReportes.get(position).getDescripcion()+"");
         holder.filaDetalle.setText(listaReportes.get(position).getDetalle()+"");
 
 
@@ -52,10 +53,16 @@ public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPerson
             intent.putExtra("detalle", listaReportes.get(position).getDetalle()+"");
             intent.putExtra("usuario", listaReportes.get(position).getUsername()+"");
             intent.putExtra("fecha_hora_creacion", listaReportes.get(position).getFecha_hora_creacion()+"");
-            intent.putExtra("estado", listaReportes.get(position).getId_estado()+"");
+            //intent.putExtra("estado", listaReportes.get(position).getId_estado()+"");
+            intent.putExtra("estado", listaReportes.get(position).getDescripcion()+"");
             intent.putExtra("latitud",listaReportes.get(position).getLatitud()+"");
             intent.putExtra("longitud",listaReportes.get(position).getLongitud()+"");
             intent.putExtra("foto",listaReportes.get(position).getFoto()+"");
+            intent.putExtra("acciones",listaReportes.get(position).getAcciones()+"");
+            intent.putExtra("foto_evidencia",listaReportes.get(position).getFoto_evidencia()+"");
+            intent.putExtra("fecha_enproceso",listaReportes.get(position).getFecha_enproceso()+"");
+            intent.putExtra("fecha_atendido",listaReportes.get(position).getFecha_atendido()+"");
+            intent.putExtra("username_evidencia",listaReportes.get(position).getUsername_evidencia()+"");
 
             context.startActivity(intent);
         });
@@ -70,28 +77,28 @@ public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPerson
         //return 0;
     }
 
-    private void mostrarMensaje(String mensaje){
-        AlertDialog.Builder ventana = new AlertDialog.Builder(context);
-        ventana.setTitle("Mensaje Informativo");
-        ventana.setMessage(mensaje);
-        ventana.setPositiveButton("Aceptar",(dialogInterface, i) -> {
-            Intent intent = new Intent(context,ListarActivity.class);
-            context.startActivity(intent);
-        });
-        ventana.create().show();
-    }
+    //private void mostrarMensaje(String mensaje){
+    //    AlertDialog.Builder ventana = new AlertDialog.Builder(context);
+    //    ventana.setTitle("Mensaje Informativo");
+    //    ventana.setMessage(mensaje);
+    //    ventana.setPositiveButton("Aceptar",(dialogInterface, i) -> {
+    //        Intent intent = new Intent(context,ListarActivity.class);
+    //        context.startActivity(intent);
+    //    });
+    //    ventana.create().show();
+    //}
 
     public class MiViewHolder extends RecyclerView.ViewHolder {
         TextView filaReporte, filaDetalle, filaUsuario, filaFechayHora, filaEstado;
         ImageButton filaVer;
         public MiViewHolder(@NonNull View itemView) {
             super(itemView);
-            filaReporte = itemView.findViewById(R.id.filaReporteEvi);
-            filaUsuario = itemView.findViewById(R.id.filaUsuarioEvi);
-            filaDetalle = itemView.findViewById(R.id.filaDetalleEvi);
-            filaFechayHora = itemView.findViewById(R.id.filaFechayHoraEvi);
-            filaEstado = itemView.findViewById(R.id.filaEstadoEvi);
-            filaVer = itemView.findViewById(R.id.filaVerEvi);
+            filaReporte = itemView.findViewById(R.id.filaReporte);
+            filaUsuario = itemView.findViewById(R.id.filaUsuario);
+            filaDetalle = itemView.findViewById(R.id.filaDetalle);
+            filaFechayHora = itemView.findViewById(R.id.filaFechayHora);
+            filaEstado = itemView.findViewById(R.id.filaEstado);
+            filaVer = itemView.findViewById(R.id.filaVer);
 
         }
     }
