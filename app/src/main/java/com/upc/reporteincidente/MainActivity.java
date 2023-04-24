@@ -6,13 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
 
 
     TextView txtFullname;
-    Button btnReportar;
+    Button btnReportar, btnResolver;
 
 
     @Override
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
         txtFullname = findViewById(R.id.txtFullname);
         btnReportar = findViewById(R.id.btnReportar);
+        btnResolver = findViewById(R.id.btnResolver);
+
         Intent intent = getIntent();
 
         String usuario = intent.getStringExtra("usuario");
@@ -37,6 +40,15 @@ public class MainActivity extends AppCompatActivity {
         {
             Intent intentP = new Intent(this, ListarActivity.class);
             startActivity(intentP);
+        });
+
+        btnResolver.setOnClickListener(view -> {
+            if(privilegio.toString().equals("2")) {
+                Intent intentR = new Intent(this, ListarevidenciaActivity.class);
+                startActivity(intentR);
+            }else{
+                Toast.makeText(this, "No tiene privilegios", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }

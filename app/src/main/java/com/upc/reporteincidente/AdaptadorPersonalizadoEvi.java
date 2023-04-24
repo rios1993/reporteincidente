@@ -15,13 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPersonalizado.MiViewHolder> {
+public class AdaptadorPersonalizadoEvi extends RecyclerView.Adapter<AdaptadorPersonalizadoEvi.MiViewHolder> {
 
     private Context context;
     private List<Reporte> listaReportes = new ArrayList<>();
 
 
-    public AdaptadorPersonalizado(Context context, List<Reporte> listaReportes){
+    public AdaptadorPersonalizadoEvi(Context context, List<Reporte> listaReportes){
         this.context = context;
         this.listaReportes = listaReportes;
     }
@@ -29,24 +29,24 @@ public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPerson
 
     @NonNull
     @Override
-    public MiViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdaptadorPersonalizadoEvi.MiViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View vista = inflater.inflate(R.layout.fila, parent,false);
+        View vista = inflater.inflate(R.layout.filaevidencia, parent,false);
         return new MiViewHolder(vista);
         //return null;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MiViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdaptadorPersonalizadoEvi.MiViewHolder holder, int position) {
 
-        holder.filaReporte.setText(listaReportes.get(position).getId_reporte()+"");
-        holder.filaUsuario.setText(listaReportes.get(position).getUsername()+"");
-        holder.filaFechayHora.setText(listaReportes.get(position).getFecha_hora_creacion()+"");
-        holder.filaEstado.setText(listaReportes.get(position).getId_estado()+"");
-        holder.filaDetalle.setText(listaReportes.get(position).getDetalle()+"");
+        holder.filaReporteEvi.setText(listaReportes.get(position).getId_reporte()+"");
+        holder.filaUsuarioEvi.setText(listaReportes.get(position).getUsername()+"");
+        holder.filaFechayHoraEvi.setText(listaReportes.get(position).getFecha_hora_creacion()+"");
+        holder.filaEstadoEvi.setText(listaReportes.get(position).getId_estado()+"");
+        holder.filaDetalleEvi.setText(listaReportes.get(position).getDetalle()+"");
 
 
-        holder.filaVer.setOnClickListener(view -> {
+        holder.filaVerEvi.setOnClickListener(view -> {
             Intent intent = new Intent(context,PeligroverActivity.class);
             intent.putExtra("id_reporte", listaReportes.get(position).getId_reporte()+"");
             intent.putExtra("detalle", listaReportes.get(position).getDetalle()+"");
@@ -82,16 +82,16 @@ public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPerson
     }
 
     public class MiViewHolder extends RecyclerView.ViewHolder {
-        TextView filaReporte, filaDetalle, filaUsuario, filaFechayHora, filaEstado;
-        ImageButton filaVer;
+        TextView filaReporteEvi, filaDetalleEvi, filaUsuarioEvi, filaFechayHoraEvi, filaEstadoEvi;
+        ImageButton filaVerEvi;
         public MiViewHolder(@NonNull View itemView) {
             super(itemView);
-            filaReporte = itemView.findViewById(R.id.filaReporteEvi);
-            filaUsuario = itemView.findViewById(R.id.filaUsuarioEvi);
-            filaDetalle = itemView.findViewById(R.id.filaDetalleEvi);
-            filaFechayHora = itemView.findViewById(R.id.filaFechayHoraEvi);
-            filaEstado = itemView.findViewById(R.id.filaEstadoEvi);
-            filaVer = itemView.findViewById(R.id.filaVerEvi);
+            filaReporteEvi = itemView.findViewById(R.id.filaReporteEvi);
+            filaUsuarioEvi = itemView.findViewById(R.id.filaUsuarioEvi);
+            filaDetalleEvi = itemView.findViewById(R.id.filaDetalleEvi);
+            filaFechayHoraEvi = itemView.findViewById(R.id.filaFechayHoraEvi);
+            filaEstadoEvi = itemView.findViewById(R.id.filaEstadoEvi);
+            filaVerEvi = itemView.findViewById(R.id.filaVerEvi);
 
         }
     }

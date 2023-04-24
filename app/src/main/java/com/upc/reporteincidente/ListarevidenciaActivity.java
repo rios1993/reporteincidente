@@ -14,7 +14,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,31 +22,26 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListarActivity extends AppCompatActivity {
+public class ListarevidenciaActivity extends AppCompatActivity {
 
-    FloatingActionButton btnNuevo;
-    RecyclerView rvListar;
+    RecyclerView rvListarEvi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listar);
+        setContentView(R.layout.activity_listarevidencia);
 
         asignarReferencias();
     }
 
     private void asignarReferencias(){
-        btnNuevo = findViewById(R.id.btnNuevoEvi);
-        btnNuevo.setOnClickListener(view -> {
-            Intent intent = new Intent(this,PeligroActivity.class);
-            startActivity(intent);
-        });
-        rvListar = findViewById(R.id.rvListarEvi);
+
+        rvListarEvi = findViewById(R.id.rvListarEvi);
         cargarDatos();
     }
 
     private void cargarDatos(){
-        String url = "https://upcmovilestf.zonaexperimental.com/index.php/listarreportes";
+        String url = "https://upcmovilestf.zonaexperimental.com/index.php/listarreportesevi";
         StringRequest peticion = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -70,10 +64,10 @@ public class ListarActivity extends AppCompatActivity {
                                 object.getString("fecha_hora_creacion")));
 
                     }
-                    AdaptadorPersonalizado adaptador;
-                    adaptador = new AdaptadorPersonalizado(ListarActivity.this,listaReportes);
-                    rvListar.setAdapter(adaptador);
-                    rvListar.setLayoutManager(new LinearLayoutManager(ListarActivity.this));
+                    AdaptadorPersonalizadoEvi adaptador;
+                    adaptador = new AdaptadorPersonalizadoEvi(ListarevidenciaActivity.this,listaReportes);
+                    rvListarEvi.setAdapter(adaptador);
+                    rvListarEvi.setLayoutManager(new LinearLayoutManager(ListarevidenciaActivity.this));
 
                 }catch (JSONException e){
                     Log.d("LLL1==>",e.toString());
