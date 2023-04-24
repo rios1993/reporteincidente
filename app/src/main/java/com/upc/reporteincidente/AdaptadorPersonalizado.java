@@ -61,6 +61,9 @@ public class AdaptadorPersonalizado extends RecyclerView.Adapter<AdaptadorPerson
             intent.putExtra("usuario", listaReportes.get(position).getUsername()+"");
             intent.putExtra("fecha_hora_creacion", listaReportes.get(position).getFecha_hora_creacion()+"");
             intent.putExtra("estado", listaReportes.get(position).getId_estado()+"");
+            intent.putExtra("latitud",listaReportes.get(position).getLatitud()+"");
+            intent.putExtra("longitud",listaReportes.get(position).getLongitud()+"");
+            intent.putExtra("foto",listaReportes.get(position).getFoto()+"");
 
             context.startActivity(intent);
         });

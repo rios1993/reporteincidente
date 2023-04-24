@@ -22,14 +22,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="95dp"
-        android:text="reportar peligros"
+        android:text="reportar/listar peligros"
         app:icon="@drawable/ic_reporte"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/txtFullname"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -40,6 +40,7 @@
         android:layout_marginTop="33dp"
         android:layout_marginEnd="97dp"
         android:text="listar peligros"
+        android:visibility="invisible"
         app:icon="@drawable/ic_lista"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
