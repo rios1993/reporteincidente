@@ -63,7 +63,8 @@ public class ListarActivity extends AppCompatActivity {
                                 object.getString("foto"),
                                 object.getDouble("latitud"),
                                 object.getDouble("longitud"),
-                                object.getInt("id_estado"),
+                                //object.getInt("id_estado"),
+                                object.getString("descripcion"),
                                 object.getInt("id_evidencia"),
                                 object.getString("username"),
                                 object.getString("fecha_hora_creacion")));

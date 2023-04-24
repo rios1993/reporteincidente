@@ -9,18 +9,21 @@ public class Reporte {
     private String foto;
     private Double latitud;
     private Double longitud;
-    private Integer id_estado;
+    //private Integer id_estado;
+    private String descripcion;
     private Integer id_evidencia;
     private String username;
     private String fecha_hora_creacion;
 
-    public Reporte(Integer id_reporte, String detalle, String foto, Double latitud, Double longitud, Integer id_estado, Integer id_evidencia, String username, String fecha_hora_creacion) {
+    //public Reporte(Integer id_reporte, String detalle, String foto, Double latitud, Double longitud, Integer id_estado, Integer id_evidencia, String username, String fecha_hora_creacion) {
+    public Reporte(Integer id_reporte, String detalle, String foto, Double latitud, Double longitud, String descripcion, Integer id_evidencia, String username, String fecha_hora_creacion) {
         this.id_reporte = id_reporte;
         this.detalle = detalle;
         this.foto = foto;
         this.latitud = latitud;
         this.longitud = longitud;
-        this.id_estado = id_estado;
+        //this.id_estado = id_estado;
+        this.descripcion = descripcion;
         this.id_evidencia = id_evidencia;
         this.username = username;
         this.fecha_hora_creacion = fecha_hora_creacion;
@@ -66,12 +69,12 @@ public class Reporte {
         this.longitud = longitud;
     }
 
-    public Integer getId_estado() {
-        return id_estado;
-    }
+    //public Integer getId_estado() { return id_estado; }
+    public String getId_estado() { return descripcion; }
 
-    public void setId_estado(Integer id_estado) {
-        this.id_estado = id_estado;
+    //public void setId_estado(Integer id_estado) { this.id_estado = id_estado; }
+    public void setId_estado(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Integer getId_evidencia() {
