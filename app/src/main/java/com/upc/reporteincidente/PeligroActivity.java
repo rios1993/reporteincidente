@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -33,14 +34,20 @@ public class PeligroActivity extends AppCompatActivity {
 
     //private String globalUsername;
 
-    //String user = ((Global) this.getApplication()).getGlbUsername();
+    private String Globaluser;
+    DateFormat date = new SimpleDateFormat("MMM dd yyyy, H:mm Z");
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peligro);
 
+        Globaluser = ((Global) this.getApplication()).getGlbUsername();
 
+        //Toast.makeText(this, Globaluser, Toast.LENGTH_SHORT).show();
 
         asignarReferencias();
     }
@@ -71,7 +78,7 @@ public class PeligroActivity extends AppCompatActivity {
     }
 
     private void asignarReferencias(){
-        DateFormat date = new SimpleDateFormat("MMM dd yyyy, h:mm");
+
         String dateFormatted = date.format(Calendar.getInstance().getTime());
 
         txtPeligro = findViewById((R.id.txtPeligro));
@@ -108,9 +115,9 @@ public class PeligroActivity extends AppCompatActivity {
                             //parametros.put("longitud", "2.2");
                             //parametros.put("id_estado", "1");
                             //parametros.put("id_evidencia", "");
-                            parametros.put("username", "crengifo");
+                            parametros.put("username", Globaluser );
                             //parametros.put("username", user );
-                            parametros.put("fecha_hora_creacion", "01/04/2023");
+                            parametros.put("fecha_hora_creacion", dateFormatted);
                             return parametros;
                             //return super.getParams();
                         }

@@ -4,6 +4,9 @@ import android.app.Application;
 
 public class Global extends Application {
 
+    private String glbUsername;
+    private String glbPrivilegio;
+
     public String getGlbUsername() {
         return glbUsername;
     }
@@ -20,8 +23,7 @@ public class Global extends Application {
         this.glbPrivilegio = glbPrivilegio;
     }
 
-    private String glbUsername;
-    private String glbPrivilegio;
+
 
 
 }
