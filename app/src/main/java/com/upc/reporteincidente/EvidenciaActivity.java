@@ -242,9 +242,9 @@ public class EvidenciaActivity extends AppCompatActivity {
                             //parametros.put("fecha_nacimiento", txtFecha.getText().toString());
                             //parametros.put("id_mascota", Integer.toString(id_mascota));
 
-                            Log.d("MMM==>", getIntent().getStringExtra("id_evidencia"));
-                            Log.d("MMM==>", txtAcciones.getText().toString());
-                            Log.d("MMM==>", txtFechaAtencion.getText().toString());
+                            //Log.d("MMM==>", getIntent().getStringExtra("id_evidencia"));
+                            //Log.d("MMM==>", txtAcciones.getText().toString());
+                            //Log.d("MMM==>", txtFechaAtencion.getText().toString());
 
                             return parametros;
                             //return super.getParams();
