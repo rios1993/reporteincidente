@@ -61,6 +61,7 @@ public class AdaptadorPersonalizadoEvi extends RecyclerView.Adapter<AdaptadorPer
             intent.putExtra("fecha_enproceso",listaReportes.get(position).getFecha_enproceso()+"");
             intent.putExtra("fecha_atendido",listaReportes.get(position).getFecha_atendido()+"");
             intent.putExtra("username_evidencia",listaReportes.get(position).getUsername_evidencia()+"");
+            intent.putExtra("id_evidencia",listaReportes.get(position).getId_evidencia()+"");
 
             context.startActivity(intent);
         });
