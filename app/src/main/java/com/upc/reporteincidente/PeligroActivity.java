@@ -34,12 +34,9 @@ public class PeligroActivity extends AppCompatActivity {
 
     //private String globalUsername;
 
-    private String Globaluser;
+    private String Globaluser, GlobalLatitud, GlobalLongitud;
+
     DateFormat date = new SimpleDateFormat("MMM dd yyyy, H:mm Z");
-
-
-
-
 
 
     @Override
@@ -72,11 +69,23 @@ public class PeligroActivity extends AppCompatActivity {
     private boolean validarDatos(){
         String detalle = txtPeligro.getText().toString();
 
+        Intent intent = getIntent();
+
         boolean valida = true;
 
         if(detalle.equals("")){
             txtPeligro.setError("El detalle es obligatorio");
             valida = false;
+        }
+
+        GlobalLatitud = ((Global) this.getApplication()).getGlbLatitud()+"";
+        GlobalLongitud = ((Global) this.getApplication()).getGlbLongitud()+"";
+
+        Log.d("LLL2==>",GlobalLatitud);
+
+        if(GlobalLatitud == null) {
+            valida = false;
+            Toast.makeText(this, "Faltan las coordenadas", Toast.LENGTH_SHORT).show();
         }
 
         return valida;
@@ -96,6 +105,7 @@ public class PeligroActivity extends AppCompatActivity {
             intent.putExtra("latitud","-12.076633907790978");
             intent.putExtra("longitud","-77.09359547166535");
             intent.putExtra("titulo", "Mi ubicacion");
+
             startActivity(intent);
         });
 
@@ -124,10 +134,11 @@ public class PeligroActivity extends AppCompatActivity {
 
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String, String> parametros = new HashMap<>();
+                            Intent intent = getIntent();
                             parametros.put("detalle", txtPeligro.getText().toString());
                             //parametros.put("foto", "Foto");
-                            //parametros.put("latitud", "1.1");
-                            //parametros.put("longitud", "2.2");
+                            parametros.put("latitud", GlobalLatitud);
+                            parametros.put("longitud", GlobalLongitud);
                             //parametros.put("id_estado", "1");
                             //parametros.put("id_evidencia", "");
                             parametros.put("username", Globaluser );

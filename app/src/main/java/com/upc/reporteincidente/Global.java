@@ -23,6 +23,24 @@ public class Global extends Application {
         this.glbPrivilegio = glbPrivilegio;
     }
 
+    public Double getGlbLatitud() {
+        return glbLatitud;
+    }
+
+    public void setGlbLatitud(Double glbLatitud) {
+        this.glbLatitud = glbLatitud;
+    }
+
+    public Double getGlbLongitud() {
+        return glbLongitud;
+    }
+
+    public void setGlbLongitud(Double glbLongitud) {
+        this.glbLongitud = glbLongitud;
+    }
+
+    private Double glbLatitud, glbLongitud;
+
 
 
 

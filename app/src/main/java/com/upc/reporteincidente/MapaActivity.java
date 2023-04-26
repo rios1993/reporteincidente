@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -49,8 +50,15 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
         btnGrabarUbicacion = findViewById(R.id.btnGrabarUbicacion);
 
         btnGrabarUbicacion.setOnClickListener(view -> {
-            Intent intent = new Intent(this, PeligroActivity.class);
-            startActivity(intent);
+            //Intent intent = new Intent(this, PeligroActivity.class);
+            //intent.putExtra("latitudresp",latitud+"");
+            //intent.putExtra("longitudresp",longitud+"");
+            ((Global) this.getApplication()).setGlbLatitud(latitud);
+            ((Global) this.getApplication()).setGlbLongitud(longitud);
+
+            Log.d("LLL1==>",latitud+"");
+            this.finish();
+            //startActivity(intent);
         });
     }
 
