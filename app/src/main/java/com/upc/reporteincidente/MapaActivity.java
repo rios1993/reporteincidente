@@ -23,7 +23,8 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private ActivityMapaBinding binding;
 
-    Double latitud, longitud;
+    Double latitud,longitud;
+    String titulo;
 
     Button btnGrabarUbicacion;
 
@@ -31,7 +32,7 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //asignarReferencias();
+
 
         binding = ActivityMapaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -40,16 +41,18 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        asignarReferencias();
     }
 
-//    private void asignarReferencias() {
-//        btnGrabarUbicacion = findViewById(R.id.btnGrabarUbicacion);
-//
-//        btnGrabarUbicacion.setOnClickListener(view -> {
-//            Intent intent = new Intent(this, PeligroActivity.class);
-//            startActivity(intent);
-//        });
-//    }
+    private void asignarReferencias() {
+        btnGrabarUbicacion = findViewById(R.id.btnGrabarUbicacion);
+
+        btnGrabarUbicacion.setOnClickListener(view -> {
+            Intent intent = new Intent(this, PeligroActivity.class);
+            startActivity(intent);
+        });
+    }
 
     /**
      * Manipulates the map once available.
@@ -66,13 +69,20 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
+
+        Intent intent = getIntent();
+
+        latitud = Double.parseDouble(intent.getStringExtra("latitud"));
+        longitud = Double.parseDouble(intent.getStringExtra("longitud"));
+        titulo = intent.getStringExtra("titulo");
+
         // Add a marker in Sydney and move the camera
-        LatLng upc = new LatLng(-12.087592613789269, -77.04997876785293);
-        mMap.addMarker(new MarkerOptions().position(upc).draggable(true).title("UPC San Isidro"));
+        LatLng upc = new LatLng(latitud, longitud);
+        mMap.addMarker(new MarkerOptions().position(upc).draggable(true).title(titulo));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(upc,19));
 
-        latitud = upc.latitude;
-        longitud = upc.longitude;
+        //latitud = upc.latitude;
+        //longitud = upc.longitude;
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling

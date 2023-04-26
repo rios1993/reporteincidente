@@ -93,6 +93,9 @@ public class PeligroActivity extends AppCompatActivity {
 
         btnUbicacion.setOnClickListener(view -> {
             Intent intent = new Intent(this, MapaActivity.class);
+            intent.putExtra("latitud","-12.076633907790978");
+            intent.putExtra("longitud","-77.09359547166535");
+            intent.putExtra("titulo", "Mi ubicacion");
             startActivity(intent);
         });
 
