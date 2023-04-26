@@ -6,6 +6,8 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -20,6 +22,9 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.upc.reporteincidente.databinding.ActivityMapaBinding;
 
+import java.io.IOException;
+import java.util.List;
+
 public class MapaActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -29,6 +34,8 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
     String titulo;
 
     Button btnGrabarUbicacion;
+
+    Geocoder geocoder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,8 +88,32 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
+        mMap.setOnMapLongClickListener(latLng -> {
+            //Log.d("==>","Valores: "+latLng.toString());
+//            try{
+//
+//                List<Address> listaDirecciones = geocoder.getFromLocation(latLng.latitude,latLng.longitude,1);
+//                if(listaDirecciones.size()>0){
+//                    Address direccion = listaDirecciones.get(0);
+//                    String nombreDireccion = direccion.getAddressLine(0);
+//                    mMap.addMarker(new MarkerOptions()
+//                            .position(latLng)
+//                            .draggable(true)
+//                            .title(nombreDireccion));
+//                }
+//            }catch (IOException e){
+//                e.printStackTrace();
+//            }
+//
+            latitud = latLng.latitude;
+            longitud = latLng.longitude;
+          mMap.addMarker(new MarkerOptions().position(latLng));
 
-        Intent intent = getIntent();
+
+        });
+
+
+        //Intent intent = getIntent();
 
         //Log.d("C1==>",intent.getStringExtra("latitud"));
 

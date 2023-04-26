@@ -40,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         asignarReferencias();
+
     }
 
     private void asignarReferencias(){
@@ -74,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Exito", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
 
+
                             //Bundle bundle = new Bundle();
 
                             //bundle.putString("usuario", globalUsuario);
@@ -87,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra("privilegio",globalPrivilegio);
 
                             startActivity(intent);
+
                         }else{
                             Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
                         }
