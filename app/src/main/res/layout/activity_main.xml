@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/login"
     tools:context=".MainActivity">
 
     <TextView
@@ -26,6 +27,7 @@
         android:layout_marginStart="92dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="95dp"
+        android:background="@drawable/loginbuttonshape"
         android:text="reportar/listar peligros"
         app:icon="@drawable/ic_reporte"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,33 +36,21 @@
         app:layout_constraintTop_toBottomOf="@+id/txtFullname"
         tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/btnLista"
-        android:layout_width="223dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="91dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginEnd="97dp"
-        android:text="listar peligros"
-        android:visibility="invisible"
-        app:icon="@drawable/ic_lista"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnReportar" />
 
     <Button
         android:id="@+id/btnResolver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="95dp"
+        android:background="@drawable/loginbuttonshape"
         android:text="Resolver peligros"
         app:icon="@drawable/ic_resolver"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLista" />
-
+        app:layout_constraintTop_toBottomOf="@+id/btnReportar" />
 
     <TextView
         android:id="@+id/textView4"

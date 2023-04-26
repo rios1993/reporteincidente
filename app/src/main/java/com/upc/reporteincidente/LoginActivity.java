@@ -32,27 +32,34 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText txtUsuario, txtPassword;
-    Button btnIngresar;
+    EditText txtUsuario, txtPassword, txtUsuario2, txtPassword2;
+    Button btnIngresar, btnLogin2, btnSalir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login2);
         asignarReferencias();
 
     }
 
     private void asignarReferencias(){
-        txtUsuario = findViewById(R.id.txtUsuario);
-        txtPassword = findViewById(R.id.txtPassword);
-        btnIngresar = findViewById(R.id.btnIngresar);
+        txtUsuario2 = findViewById(R.id.txtUsuario2);
+        txtPassword2 = findViewById(R.id.txtPassword2);
+        //btnIngresar = findViewById(R.id.btnIngresar);
+        btnLogin2 = findViewById(R.id.btnLogin2);
+        btnSalir = findViewById(R.id.btnSalir);
 
-        btnIngresar.setOnClickListener(view -> {
+        btnSalir.setOnClickListener(view -> {
+            this.finish();
+            System.exit(0);
+        });
 
-            String txtUser = txtUsuario.getText().toString();
+        btnLogin2.setOnClickListener(view -> {
 
-            String string_to_be_converted_to_MD5 = txtPassword.getText().toString();
+            String txtUser = txtUsuario2.getText().toString();
+
+            String string_to_be_converted_to_MD5 = txtPassword2.getText().toString();
             String txtPassEncriptado = md5(string_to_be_converted_to_MD5);
             //System.out.println(txtPassEncriptado);
 

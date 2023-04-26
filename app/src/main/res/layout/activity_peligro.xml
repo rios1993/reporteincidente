@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/login"
     tools:context=".PeligroActivity">
 
     <TextView
@@ -46,6 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
         android:layout_marginTop="17dp"
+        android:background="@drawable/loginbuttonshape"
         android:text="ubicación"
         app:icon="@drawable/ic_ubicacion"
         app:layout_constraintStart_toEndOf="@+id/textView7"
@@ -68,6 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
         android:layout_marginTop="46dp"
+        android:background="@drawable/loginbuttonshape"
         android:text="foto"
         app:icon="@drawable/ic_camara"
         app:layout_constraintStart_toEndOf="@+id/textView6"
@@ -79,6 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="272dp"
         android:layout_marginTop="107dp"
+        android:background="@drawable/loginbuttonshape"
         android:text="enviar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnUbicacion" />
