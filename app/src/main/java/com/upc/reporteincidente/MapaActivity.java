@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -23,9 +25,13 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
 
     Double latitud, longitud;
 
+    Button btnGrabarUbicacion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //asignarReferencias();
 
         binding = ActivityMapaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -35,6 +41,15 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
+
+//    private void asignarReferencias() {
+//        btnGrabarUbicacion = findViewById(R.id.btnGrabarUbicacion);
+//
+//        btnGrabarUbicacion.setOnClickListener(view -> {
+//            Intent intent = new Intent(this, PeligroActivity.class);
+//            startActivity(intent);
+//        });
+//    }
 
     /**
      * Manipulates the map once available.
