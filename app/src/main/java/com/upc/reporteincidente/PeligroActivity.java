@@ -30,7 +30,7 @@ public class PeligroActivity extends AppCompatActivity {
 
     EditText txtPeligro;
 
-    Button btnEnviar;
+    Button btnEnviar, btnUbicacion;
 
     //private String globalUsername;
 
@@ -89,6 +89,12 @@ public class PeligroActivity extends AppCompatActivity {
 
         txtPeligro = findViewById((R.id.txtPeligro));
         btnEnviar = findViewById(R.id.btnEnviar);
+        btnUbicacion = findViewById(R.id.btnUbicacion);
+
+        btnUbicacion.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MapaActivity.class);
+            startActivity(intent);
+        });
 
         btnEnviar.setOnClickListener(view -> {
             boolean valida = true;
