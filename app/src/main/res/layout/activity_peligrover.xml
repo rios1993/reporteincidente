@@ -294,4 +294,15 @@
         app:layout_constraintStart_toEndOf="@+id/txtLongitudVer"
         app:layout_constraintTop_toBottomOf="@+id/txtFotoVer" />
 
+    <Button
+        android:id="@+id/btnRegresarVer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="Regresar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtUsuarioEvidencia" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

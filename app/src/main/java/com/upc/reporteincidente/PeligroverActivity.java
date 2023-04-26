@@ -11,7 +11,7 @@ public class PeligroverActivity extends AppCompatActivity {
 
     TextView txtIDReporte, txtDetalle, txtFoto, txtLatitud, txtLongitud, txtEstado, txtFechaHora, txtUsuario, txtAcciones, txtFoto_evidencia, txtFecha_enproceso, txtFecha_Atendido, txtUsername_evidencia;
 
-    Button btnVerMapa;
+    Button btnVerMapa, btnRegresarVer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +38,17 @@ public class PeligroverActivity extends AppCompatActivity {
         txtFecha_Atendido=findViewById(R.id.txtFechaAtencion);
         txtUsername_evidencia=findViewById(R.id.txtUsuarioEvidencia);
         btnVerMapa = findViewById(R.id.btnVerMapa);
+        btnRegresarVer = findViewById(R.id.btnRegresarVer);
+
+        btnRegresarVer.setOnClickListener(view -> {
+            this.finish();
+        });
 
         btnVerMapa.setOnClickListener(view -> {
             Intent intent = new Intent(this, MapaActivity.class);
-            intent.putExtra("latitudver",getIntent().getStringExtra("latitud"));
-            intent.putExtra("longitudver",getIntent().getStringExtra("longitud"));
-            intent.putExtra("titulover","Mi ubicacion");
+            ((Global) this.getApplication()).setGlbLatitud(Double.parseDouble(getIntent().getStringExtra("latitud")));
+            ((Global) this.getApplication()).setGlbLongitud(Double.parseDouble(getIntent().getStringExtra("longitud")));
+
             startActivity(intent);
 
         });
@@ -64,6 +69,8 @@ public class PeligroverActivity extends AppCompatActivity {
         txtFecha_enproceso.setText(getIntent().getStringExtra("fecha_enproceso"));
         txtFecha_Atendido.setText(getIntent().getStringExtra("fecha_atendido"));
         txtUsername_evidencia.setText(getIntent().getStringExtra("username_evidencia"));
+
+
 
         }
 
