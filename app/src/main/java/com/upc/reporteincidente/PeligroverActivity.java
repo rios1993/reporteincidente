@@ -2,12 +2,16 @@ package com.upc.reporteincidente;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class PeligroverActivity extends AppCompatActivity {
 
     TextView txtIDReporte, txtDetalle, txtFoto, txtLatitud, txtLongitud, txtEstado, txtFechaHora, txtUsuario, txtAcciones, txtFoto_evidencia, txtFecha_enproceso, txtFecha_Atendido, txtUsername_evidencia;
+
+    Button btnVerMapa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,16 @@ public class PeligroverActivity extends AppCompatActivity {
         txtFecha_enproceso = findViewById(R.id.txtFechaProceso);
         txtFecha_Atendido=findViewById(R.id.txtFechaAtencion);
         txtUsername_evidencia=findViewById(R.id.txtUsuarioEvidencia);
+        btnVerMapa = findViewById(R.id.btnVerMapa);
+
+        btnVerMapa.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MapaActivity.class);
+            intent.putExtra("latitudver",getIntent().getStringExtra("latitud"));
+            intent.putExtra("longitudver",getIntent().getStringExtra("longitud"));
+            intent.putExtra("titulover","Mi ubicacion");
+            startActivity(intent);
+
+        });
 
     }
 

@@ -79,7 +79,7 @@
         android:layout_marginTop="16dp"
         android:text="Longitud"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintHorizontal_bias="0.109"
         app:layout_constraintStart_toEndOf="@+id/txtLatitudVer"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -98,13 +98,13 @@
         android:id="@+id/txtUsuarioVer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="256dp"
         android:text="Usuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/btnVerMapa" />
 
     <TextView
         android:id="@+id/textView18"
@@ -284,5 +284,14 @@
         app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintStart_toEndOf="@+id/textView25"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+    <Button
+        android:id="@+id/btnVerMapa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver mapa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtLongitudVer"
+        app:layout_constraintTop_toBottomOf="@+id/txtFotoVer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

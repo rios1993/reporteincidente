@@ -46,6 +46,9 @@ public class PeligroActivity extends AppCompatActivity {
 
         Globaluser = ((Global) this.getApplication()).getGlbUsername();
 
+        ((Global) this.getApplication()).setGlbLatitud(-12.076633907790978);
+        ((Global) this.getApplication()).setGlbLongitud(-77.09359547166535);
+
         //Toast.makeText(this, Globaluser, Toast.LENGTH_SHORT).show();
 
         asignarReferencias();
@@ -102,9 +105,10 @@ public class PeligroActivity extends AppCompatActivity {
 
         btnUbicacion.setOnClickListener(view -> {
             Intent intent = new Intent(this, MapaActivity.class);
-            intent.putExtra("latitud","-12.076633907790978");
-            intent.putExtra("longitud","-77.09359547166535");
-            intent.putExtra("titulo", "Mi ubicacion");
+            //intent.putExtra("latitud","-12.076633907790978");
+            //intent.putExtra("longitud","-77.09359547166535");
+            //intent.putExtra("titulo", "Mi ubicacion");
+
 
             startActivity(intent);
         });

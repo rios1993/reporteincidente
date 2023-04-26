@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -19,7 +20,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.upc.reporteincidente.databinding.ActivityMapaBinding;
 
-public class MapaActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerDragListener {
+public class MapaActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ActivityMapaBinding binding;
@@ -43,6 +44,9 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        latitud = ((Global) this.getApplication()).getGlbLatitud();
+        longitud = ((Global) this.getApplication()).getGlbLongitud();
+
         asignarReferencias();
     }
 
@@ -56,7 +60,7 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
             ((Global) this.getApplication()).setGlbLatitud(latitud);
             ((Global) this.getApplication()).setGlbLongitud(longitud);
 
-            Log.d("LLL1==>",latitud+"");
+            //Log.d("Lexit1==>",latitud+"");
             this.finish();
             //startActivity(intent);
         });
@@ -80,14 +84,53 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
 
         Intent intent = getIntent();
 
-        latitud = Double.parseDouble(intent.getStringExtra("latitud"));
-        longitud = Double.parseDouble(intent.getStringExtra("longitud"));
-        titulo = intent.getStringExtra("titulo");
+        //Log.d("C1==>",intent.getStringExtra("latitud"));
 
+//        if(intent.getStringExtra("latitud") != null) {
+//
+//            latitud = Double.parseDouble(intent.getStringExtra("latitud"));
+//            longitud = Double.parseDouble(intent.getStringExtra("longitud"));
+//            titulo = intent.getStringExtra("titulo");
+//            Log.d("CC1==>",intent.getStringExtra("latitud"));
+//
+//        } else if (intent.getStringExtra("latitudver") != null) {
+//            latitud = Double.parseDouble(intent.getStringExtra("latitudver"));
+//            longitud = Double.parseDouble(intent.getStringExtra("longitudver"));
+//            titulo = intent.getStringExtra("titulover");
+//
+//        }
+
+        titulo = "Mi ubicacion";
+
+        mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
+            @Override
+            public void onMarkerDrag(@NonNull Marker marker) {
+
+            }
+
+            @Override
+            public void onMarkerDragEnd(@NonNull Marker marker) {
+                latitud = marker.getPosition().latitude;
+                longitud = marker.getPosition().longitude;
+
+                //Toast.makeText(this, latitud+"", Toast.LENGTH_SHORT).show();
+                //Log.d("Lx1==>",latitud+"");
+
+            }
+
+            @Override
+            public void onMarkerDragStart(@NonNull Marker marker) {
+
+            }
+        });
         // Add a marker in Sydney and move the camera
+
+        //LatLng upc = new LatLng(latitud, longitud);
         LatLng upc = new LatLng(latitud, longitud);
         mMap.addMarker(new MarkerOptions().position(upc).draggable(true).title(titulo));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(upc,19));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(upc,18));
+
+
 
         //latitud = upc.latitude;
         //longitud = upc.longitude;
@@ -105,27 +148,14 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setMyLocationEnabled(true);
 
 
-    }
 
-    @Override
-    public void onMarkerDrag(@NonNull Marker marker) {
 
-    }
 
-    @Override
-    public void onMarkerDragEnd(@NonNull Marker marker) {
-        latitud = marker.getPosition().latitude;
-        longitud = marker.getPosition().longitude;
 
     }
 
-    @Override
-    public void onMarkerDragStart(@NonNull Marker marker) {
 
-    }
 
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-        super.onPointerCaptureChanged(hasCapture);
-    }
+
+
 }
