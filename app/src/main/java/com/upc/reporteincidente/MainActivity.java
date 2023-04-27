@@ -66,9 +66,13 @@ public class MainActivity extends AppCompatActivity {
             ventana.setTitle("Salir");
             ventana.setMessage("Desea salir?");
             ventana.setPositiveButton("Aceptar",(dialogInterface, i) -> {
-                finish();
-                System.exit(0);
+                //finish();
+                //System.exit(0);
 
+                Intent intentS = new Intent(this, LoginActivity.class);
+                startActivity(intentS);
+                Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show();
+                this.finish();
             });
             ventana.setNegativeButton("NO",null);
             ventana.create().show();

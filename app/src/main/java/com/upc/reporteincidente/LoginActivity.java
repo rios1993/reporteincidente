@@ -51,70 +51,72 @@ public class LoginActivity extends AppCompatActivity {
         btnSalir = findViewById(R.id.btnSalir);
 
         btnSalir.setOnClickListener(view -> {
-            this.finish();
+            finish();
             System.exit(0);
         });
 
         btnLogin2.setOnClickListener(view -> {
 
-            String txtUser = txtUsuario2.getText().toString();
+            if(validarDatos())
+            {
+                String txtUser = txtUsuario2.getText().toString();
 
-            String string_to_be_converted_to_MD5 = txtPassword2.getText().toString();
-            String txtPassEncriptado = md5(string_to_be_converted_to_MD5);
-            //System.out.println(txtPassEncriptado);
+                String string_to_be_converted_to_MD5 = txtPassword2.getText().toString();
+                String txtPassEncriptado = md5(string_to_be_converted_to_MD5);
+                //System.out.println(txtPassEncriptado);
 
-            String criterio = txtUser + "/" + txtPassEncriptado;
-            String url = "https://upcmovilestf.zonaexperimental.com/index.php/login/" + criterio;
-            //String url = "https://upcmovilestf.zonaexperimental.com/index.php/productos";
+                String criterio = txtUser + "/" + txtPassEncriptado;
+                String url = "https://upcmovilestf.zonaexperimental.com/index.php/login/" + criterio;
+                //String url = "https://upcmovilestf.zonaexperimental.com/index.php/productos";
 
-            StringRequest peticion = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    try {
-                        JSONArray jsonArray = new JSONArray(response);
-                        if (jsonArray.length()>0){
-                            JSONObject object = jsonArray.getJSONObject(0);
-                            String globalUsuario = object.getString("username");
-                            String globalFullName = object.getString("fullname");
-                            String globalPrivilegio = object.getString("privilegio");
-
-
-                            Toast.makeText(LoginActivity.this, "Exito", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                StringRequest peticion = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            if (jsonArray.length()>0){
+                                JSONObject object = jsonArray.getJSONObject(0);
+                                String globalUsuario = object.getString("username");
+                                String globalFullName = object.getString("fullname");
+                                String globalPrivilegio = object.getString("privilegio");
 
 
-                            //Bundle bundle = new Bundle();
+                                Toast.makeText(LoginActivity.this, "Inicio de sesión exitosa", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
 
-                            //bundle.putString("usuario", globalUsuario);
-                            //bundle.putString("fullname",globalFullName);
-                            //bundle.putString("privilegio",globalPrivilegio);
 
-                            //intent.putExtras(bundle);
+                                //Bundle bundle = new Bundle();
 
-                            intent.putExtra("usuario",globalUsuario);
-                            intent.putExtra("fullname",globalFullName);
-                            intent.putExtra("privilegio",globalPrivilegio);
+                                //bundle.putString("usuario", globalUsuario);
+                                //bundle.putString("fullname",globalFullName);
+                                //bundle.putString("privilegio",globalPrivilegio);
 
-                            startActivity(intent);
-                            finish();
+                                //intent.putExtras(bundle);
 
-                        }else{
-                            Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                                intent.putExtra("usuario",globalUsuario);
+                                intent.putExtra("fullname",globalFullName);
+                                intent.putExtra("privilegio",globalPrivilegio);
+
+                                startActivity(intent);
+                                finish();
+
+                            }else{
+                                Toast.makeText(LoginActivity.this, "Usuario y/o contraseña incorrecto", Toast.LENGTH_SHORT).show();
+                            }
+
+
+                        }catch (JSONException e){
+                            Log.d("==>", e.getMessage());
+
                         }
-
-
-                    }catch (JSONException e){
-                        Log.d("==>", e.getMessage());
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("==>", error.getMessage());
 
                     }
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.d("==>", error.getMessage());
-
-                }
-            }); //{
+                }); //{
                 //@Nullable
                 //@Override
                 //protected Map<String, String> getParams() throws AuthFailureError {
@@ -122,14 +124,37 @@ public class LoginActivity extends AppCompatActivity {
                 //    parametros.put("username", txtUser);
                 //    parametros.put("password", txtPassEncriptado);
                 //    return parametros;
-                    //return super.getParams();
-               // }
-            //};
-            RequestQueue cola = Volley.newRequestQueue(this);
-            cola.add(peticion);
+                //return super.getParams();
+                // }
+                //};
+                RequestQueue cola = Volley.newRequestQueue(this);
+                cola.add(peticion);
+            }
+
+
 
         });
 
+    }
+
+    private boolean validarDatos()
+    {
+        String usuario = txtUsuario2.getText().toString();
+        String contrasena = txtPassword2.getText().toString();
+
+        boolean valida = true;
+
+        if(usuario.equals("")){
+            txtUsuario2.setError("Ingrese su usuario");
+            valida = false;
+        }
+
+        if(contrasena.equals("")){
+            txtPassword2.setError("Ingrese su contraseña");
+            valida = false;
+        }
+
+        return valida;
     }
 
     public String md5(String s) {
