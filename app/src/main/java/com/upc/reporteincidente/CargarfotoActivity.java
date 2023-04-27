@@ -5,12 +5,17 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -40,14 +45,23 @@ public class CargarfotoActivity extends AppCompatActivity {
 
     Bitmap bitmap;
 
+    private static final int REQUEST_PERMISSIONS = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cargarfoto);
 
+        String readExternalStorage = Manifest.permission.READ_EXTERNAL_STORAGE;
+
         asignarReferencias();
 
+
+
+
     }
+
+
 
     private void asignarReferencias() {
         imgclickUpload = findViewById(R.id.imgClickUpload);
@@ -76,6 +90,25 @@ public class CargarfotoActivity extends AppCompatActivity {
         });
 
         imgclickUpload.setOnClickListener(view -> {
+
+//            if ((ContextCompat.checkSelfPermission(getApplicationContext(),
+//                    Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) && (ContextCompat.checkSelfPermission(getApplicationContext(),
+//                    Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)) {
+//                if ((ActivityCompat.shouldShowRequestPermissionRationale(this,
+//                        Manifest.permission.WRITE_EXTERNAL_STORAGE)) && (ActivityCompat.shouldShowRequestPermissionRationale(this,
+//                        Manifest.permission.READ_EXTERNAL_STORAGE))) {
+//
+//                } else {
+//                    ActivityCompat.requestPermissions(this,
+//                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE},
+//                            REQUEST_PERMISSIONS);
+//                }
+//            } else {
+//                Log.e("Else", "Else");
+//                //showFileChooser();
+//            }
+
+
             Intent intent = new Intent(Intent.ACTION_PICK);
             intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             activityResultLauncher.launch(intent);
