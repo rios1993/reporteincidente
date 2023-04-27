@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -11,7 +12,7 @@ public class PeligroverActivity extends AppCompatActivity {
 
     TextView txtIDReporte, txtDetalle, txtFoto, txtLatitud, txtLongitud, txtEstado, txtFechaHora, txtUsuario, txtAcciones, txtFoto_evidencia, txtFecha_enproceso, txtFecha_Atendido, txtUsername_evidencia;
 
-    Button btnVerMapa, btnRegresarVer;
+    Button btnVerMapa, btnRegresarVer, btnFotoVer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,13 @@ public class PeligroverActivity extends AppCompatActivity {
         txtUsername_evidencia=findViewById(R.id.txtUsuarioEvidencia);
         btnVerMapa = findViewById(R.id.btnVerMapa);
         btnRegresarVer = findViewById(R.id.btnRegresarVer);
+        btnFotoVer = findViewById(R.id.btnVerFoto);
+
+        btnFotoVer.setOnClickListener(view -> {
+            Intent intent = new Intent(this, VerfotoActivity.class);
+            startActivity(intent);
+
+        });
 
         btnRegresarVer.setOnClickListener(view -> {
             this.finish();
@@ -70,6 +78,9 @@ public class PeligroverActivity extends AppCompatActivity {
         txtFecha_Atendido.setText(getIntent().getStringExtra("fecha_atendido"));
         txtUsername_evidencia.setText(getIntent().getStringExtra("username_evidencia"));
 
+        ((Global) this.getApplication()).setGlbFotoVer(getIntent().getStringExtra("foto"));
+
+        Log.d("PPP==>", txtFoto.getText().toString());
 
 
         }
