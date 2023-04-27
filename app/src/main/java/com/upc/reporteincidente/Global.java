@@ -61,6 +61,16 @@ public class Global extends Application {
 
     private String glbFotoVer;
 
+    public String getGlbFotoVerEvidencia() {
+        return glbFotoVerEvidencia;
+    }
+
+    public void setGlbFotoVerEvidencia(String glbFotoVerEvidencia) {
+        this.glbFotoVerEvidencia = glbFotoVerEvidencia;
+    }
+
+    private String glbFotoVerEvidencia;
+
 
 
 

@@ -14,7 +14,7 @@ public class VerfotoActivity extends AppCompatActivity {
 
     ImageView imgVerFoto;
 
-    private String fullfoto;
+    private String extraRep,extraEvi, fullfoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +23,17 @@ public class VerfotoActivity extends AppCompatActivity {
 
         imgVerFoto = findViewById(R.id.imgVerFoto);
 
-        fullfoto = ((Global) this.getApplication()).getGlbFotoVer();
+        extraRep = getIntent().getStringExtra("verfotoreporte");
+        extraEvi = getIntent().getStringExtra("verfotoevidencia");
 
-        Log.d("FFF==>", fullfoto);
+        if(extraRep.equals("SI")) {
+            fullfoto = ((Global) this.getApplication()).getGlbFotoVer();
+        } else if (extraEvi.equals("SI")) {
+            fullfoto = ((Global) this.getApplication()).getGlbFotoVerEvidencia();
+        }
+
+        Log.d("FFF1==>", fullfoto);
+        Log.d("FFF2==>", extraRep);
 
         Picasso.get()
                 .load("https://upcmovilestf.zonaexperimental.com/images/"+fullfoto)

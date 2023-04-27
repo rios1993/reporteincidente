@@ -255,19 +255,18 @@
         android:id="@+id/txtFotoEvidencia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:text="Foto de evidencia"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
-        app:layout_constraintStart_toEndOf="@+id/textView23"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <TextView
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
         android:text="Usuario que atendio:"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -277,10 +276,10 @@
         android:id="@+id/txtUsuarioEvidencia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="44dp"
         android:text="Usuario que atendio"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toEndOf="@+id/textView25"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
@@ -319,5 +318,17 @@
         app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/txtDetalleVer" />
+
+    <Button
+        android:id="@+id/btnFotoVerEvidencia"
+        android:layout_width="108dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/loginbuttonshape"
+        android:text="Ver Foto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintStart_toEndOf="@+id/txtFotoEvidencia"
+        app:layout_constraintTop_toBottomOf="@+id/txtFechaAtencion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
