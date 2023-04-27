@@ -96,6 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra("privilegio",globalPrivilegio);
 
                             startActivity(intent);
+                            finish();
 
                         }else{
                             Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();

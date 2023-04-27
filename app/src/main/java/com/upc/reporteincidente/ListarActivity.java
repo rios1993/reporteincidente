@@ -1,12 +1,15 @@
 package com.upc.reporteincidente;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,6 +31,10 @@ public class ListarActivity extends AppCompatActivity {
     FloatingActionButton btnNuevo;
     RecyclerView rvListar;
 
+
+
+    //private Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +45,10 @@ public class ListarActivity extends AppCompatActivity {
 
     private void asignarReferencias(){
         btnNuevo = findViewById(R.id.btnNuevo);
+
+
+
+
         btnNuevo.setOnClickListener(view -> {
             Intent intent = new Intent(this,PeligroActivity.class);
             startActivity(intent);

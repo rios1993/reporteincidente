@@ -1,19 +1,28 @@
 package com.upc.reporteincidente;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 public class MainActivity extends AppCompatActivity {
 
 
 
     TextView txtFullname;
-    Button btnReportar, btnResolver;
+    Button btnReportar, btnResolver, btnSalirMain;
 
 
     @Override
@@ -24,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         txtFullname = findViewById(R.id.txtFullname);
         btnReportar = findViewById(R.id.btnReportar);
         btnResolver = findViewById(R.id.btnResolver);
+        btnSalirMain=findViewById(R.id.btnSalirMain);
 
         Intent intent = getIntent();
 
@@ -49,6 +59,20 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 Toast.makeText(this, "No tiene privilegios", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        btnSalirMain.setOnClickListener(view -> {
+            AlertDialog.Builder ventana = new AlertDialog.Builder(this);
+            ventana.setTitle("Salir");
+            ventana.setMessage("Desea salir?");
+            ventana.setPositiveButton("Aceptar",(dialogInterface, i) -> {
+                finish();
+                System.exit(0);
+
+            });
+            ventana.setNegativeButton("NO",null);
+            ventana.create().show();
+
         });
     }
 }
