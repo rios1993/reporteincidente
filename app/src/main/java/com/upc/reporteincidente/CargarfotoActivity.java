@@ -43,6 +43,7 @@ public class CargarfotoActivity extends AppCompatActivity {
 
     private String nombreFotoCargada;
 
+
     Bitmap bitmap;
 
     private static final int REQUEST_PERMISSIONS = 100;
@@ -57,8 +58,6 @@ public class CargarfotoActivity extends AppCompatActivity {
         asignarReferencias();
 
 
-
-
     }
 
 
@@ -69,7 +68,7 @@ public class CargarfotoActivity extends AppCompatActivity {
         btnSalirFoto = findViewById(R.id.btnSalirFoto);
 
         btnSalirFoto.setOnClickListener(view -> {
-            ((Global) this.getApplication()).setGlbFotoReporte(nombreFotoCargada);
+            //((Global) this.getApplication()).setGlbFotoReporte(nombreFotoCargada);
             this.finish();
         });
 
@@ -136,7 +135,11 @@ public class CargarfotoActivity extends AppCompatActivity {
                                 //textView.setText("Response is: "+ response);
 
                                 nombreFotoCargada = response;
+
+                                ((Global) getApplication()).setGlbFotoReporte(nombreFotoCargada);
+
                                 Toast.makeText(CargarfotoActivity.this, "Foto cargada", Toast.LENGTH_SHORT).show();
+                                CargarfotoActivity.this.finish();
                                 //Log.d("FFF==>", nombreFotoCargada);
 
 

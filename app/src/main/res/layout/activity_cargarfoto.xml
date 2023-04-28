@@ -17,23 +17,26 @@
         android:src="@drawable/upload">
 
     </ImageView>
+
     <Button
+        android:id="@+id/btnCargarFoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/loginbuttonshape"
-        android:id="@+id/btnCargarFoto"
         android:text="Cargar Foto">
 
     </Button>
+
     <Button
+        android:id="@+id/btnSalirFoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/loginbuttonshape"
-        android:id="@+id/btnSalirFoto"
-        android:text="Salir">
+        android:text="Regresar">
 
     </Button>
-
 
 
 </LinearLayout>

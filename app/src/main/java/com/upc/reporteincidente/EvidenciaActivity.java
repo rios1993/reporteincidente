@@ -99,7 +99,16 @@ public class EvidenciaActivity extends AppCompatActivity {
                 radioGrupo.check(R.id.radioEnProceso);
             }
 
-            txtFechaAtencion.setText(getIntent().getStringExtra("fecha_atendido"));
+            //Log.d("EEE==>", getIntent().getStringExtra("fecha_atendido"));
+
+            if (Objects.equals(getIntent().getStringExtra("fecha_atendido"), "null")) {
+
+                txtFechaAtencion.setText("");
+                //Log.d("EEE1==>", getIntent().getStringExtra("fecha_atendido"));
+            }else {
+                txtFechaAtencion.setText(getIntent().getStringExtra("fecha_atendido"));
+                //Log.d("EEE2==>", getIntent().getStringExtra("fecha_atendido"));
+            }
 
         }
     }
