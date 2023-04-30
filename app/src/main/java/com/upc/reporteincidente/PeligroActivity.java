@@ -30,11 +30,11 @@ public class PeligroActivity extends AppCompatActivity {
 
     EditText txtPeligro;
 
-    Button btnEnviar, btnUbicacion;
+    Button btnEnviar, btnUbicacion, btnFoto;
 
     //private String globalUsername;
 
-    private String Globaluser, GlobalLatitud, GlobalLongitud;
+    private String Globaluser, GlobalLatitud, GlobalLongitud, GlobalFotoReporte;
 
     DateFormat date = new SimpleDateFormat("MMM dd yyyy, H:mm Z");
 
@@ -83,12 +83,18 @@ public class PeligroActivity extends AppCompatActivity {
 
         GlobalLatitud = ((Global) this.getApplication()).getGlbLatitud()+"";
         GlobalLongitud = ((Global) this.getApplication()).getGlbLongitud()+"";
+        GlobalFotoReporte= ((Global) this.getApplication()).getGlbFotoReporte();
 
-        Log.d("LLL2==>",GlobalLatitud);
+        //Log.d("LLL2==>",GlobalLatitud);
 
         if(GlobalLatitud == null) {
             valida = false;
             Toast.makeText(this, "Faltan las coordenadas", Toast.LENGTH_SHORT).show();
+        }
+
+        if(GlobalFotoReporte == null){
+            Toast.makeText(this, "Seleccione una foto", Toast.LENGTH_SHORT).show();
+            valida = false;
         }
 
         return valida;
@@ -102,6 +108,12 @@ public class PeligroActivity extends AppCompatActivity {
         txtPeligro = findViewById((R.id.txtPeligro));
         btnEnviar = findViewById(R.id.btnEnviar);
         btnUbicacion = findViewById(R.id.btnUbicacion);
+        btnFoto = findViewById(R.id.btnFoto);
+
+        btnFoto.setOnClickListener(view -> {
+            Intent intent = new Intent(this, CargarfotoActivity.class);
+            startActivity(intent);
+        });
 
         btnUbicacion.setOnClickListener(view -> {
             Intent intent = new Intent(this, MapaActivity.class);
@@ -140,7 +152,7 @@ public class PeligroActivity extends AppCompatActivity {
                             Map<String, String> parametros = new HashMap<>();
                             Intent intent = getIntent();
                             parametros.put("detalle", txtPeligro.getText().toString());
-                            //parametros.put("foto", "Foto");
+                            parametros.put("foto", GlobalFotoReporte);
                             parametros.put("latitud", GlobalLatitud);
                             parametros.put("longitud", GlobalLongitud);
                             //parametros.put("id_estado", "1");

@@ -36,7 +36,7 @@ public class EvidenciaActivity extends AppCompatActivity {
 
     RadioGroup radioGrupo;
 
-    private String Globaluser;
+    private String Globaluser, GlobalFotoEvidencia;
     DateFormat date = new SimpleDateFormat("MMM dd yyyy, H:mm Z");
 
     Boolean modificar=false;
@@ -72,6 +72,15 @@ public class EvidenciaActivity extends AppCompatActivity {
             valida = false;
         }
 
+        GlobalFotoEvidencia = ((Global) this.getApplication()).getGlbFotoReporte();
+
+        //if(GlobalFotoEvidencia == null){
+        //    Toast.makeText(this, "Seleccione una foto", Toast.LENGTH_SHORT).show();
+        //    valida = false;
+       // }
+
+
+
         return valida;
 
     }
@@ -90,7 +99,16 @@ public class EvidenciaActivity extends AppCompatActivity {
                 radioGrupo.check(R.id.radioEnProceso);
             }
 
-            txtFechaAtencion.setText(getIntent().getStringExtra("fecha_atendido"));
+            //Log.d("EEE==>", getIntent().getStringExtra("fecha_atendido"));
+
+            if (Objects.equals(getIntent().getStringExtra("fecha_atendido"), "null")) {
+
+                txtFechaAtencion.setText("");
+                //Log.d("EEE1==>", getIntent().getStringExtra("fecha_atendido"));
+            }else {
+                txtFechaAtencion.setText(getIntent().getStringExtra("fecha_atendido"));
+                //Log.d("EEE2==>", getIntent().getStringExtra("fecha_atendido"));
+            }
 
         }
     }
@@ -115,6 +133,11 @@ public class EvidenciaActivity extends AppCompatActivity {
         radioAtendido=findViewById(R.id.radioAtendido);
         radioGrupo=findViewById(R.id.radioGroup);
 
+        btnFotoEvidencia.setOnClickListener(view -> {
+            Intent intent = new Intent(this, CargarfotoActivity.class);
+            startActivity(intent);
+        });
+
         String dateFormatted = date.format(Calendar.getInstance().getTime());
 
 
@@ -131,6 +154,7 @@ public class EvidenciaActivity extends AppCompatActivity {
             }
 
             if(valida) {
+                //Aqui se insertan evidencias nuevas, y se actualiza el reporte correspondiente.
                 if (!modificar) {
                     String url = "https://upcmovilestf.zonaexperimental.com/index.php/newevidencia";
                     String url2 = "https://upcmovilestf.zonaexperimental.com/index.php/updatereporte";
@@ -156,7 +180,7 @@ public class EvidenciaActivity extends AppCompatActivity {
                             //parametros.put("tipo", txt.getText().toString());
                             parametros.put("fecha_enproceso", dateFormatted);
                             parametros.put("username", Globaluser);
-                            //parametros.put("fecha_nacimiento", txtFecha.getText().toString());
+                            //parametros.put("foto_evidencia", GlobalFotoEvidencia);
 
                             //Log.d("MMM==>", getIntent().getStringExtra("id_reporte"));
                             //Log.d("MMM==>", txtAcciones.getText().toString());
@@ -208,6 +232,7 @@ public class EvidenciaActivity extends AppCompatActivity {
 
 
                 }else{
+                    //Aqui se actualizan las evidencias y de corresponder, se actualiza el estado del reporte
                     String url = "https://upcmovilestf.zonaexperimental.com/index.php/updevidencia";
                     String url2 = "https://upcmovilestf.zonaexperimental.com/index.php/updatereporte";
                     StringRequest peticion = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -229,11 +254,13 @@ public class EvidenciaActivity extends AppCompatActivity {
                             Map<String, String> parametros = new HashMap<>();
                             parametros.put("id_evidencia",getIntent().getStringExtra("id_evidencia"));
                             parametros.put("acciones", txtAcciones.getText().toString());
+                            parametros.put("foto_evidencia", GlobalFotoEvidencia);
 
                             if(txtFechaAtencion.getText().toString().isEmpty()){
                                 parametros.put("fecha_atendido", "01/01/1980");
                             }else{
                                 parametros.put("fecha_atendido", txtFechaAtencion.getText().toString());
+
                             }
 
 

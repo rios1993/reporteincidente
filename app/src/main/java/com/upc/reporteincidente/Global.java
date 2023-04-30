@@ -7,6 +7,16 @@ public class Global extends Application {
     private String glbUsername;
     private String glbPrivilegio;
 
+    public String getGlbFotoReporte() {
+        return glbFotoReporte;
+    }
+
+    public void setGlbFotoReporte(String glbFotoReporte) {
+        this.glbFotoReporte = glbFotoReporte;
+    }
+
+    private String glbFotoReporte;
+
     public String getGlbUsername() {
         return glbUsername;
     }
@@ -40,6 +50,26 @@ public class Global extends Application {
     }
 
     private Double glbLatitud, glbLongitud;
+
+    public String getGlbFotoVer() {
+        return glbFotoVer;
+    }
+
+    public void setGlbFotoVer(String glbFotoVer) {
+        this.glbFotoVer = glbFotoVer;
+    }
+
+    private String glbFotoVer;
+
+    public String getGlbFotoVerEvidencia() {
+        return glbFotoVerEvidencia;
+    }
+
+    public void setGlbFotoVerEvidencia(String glbFotoVerEvidencia) {
+        this.glbFotoVerEvidencia = glbFotoVerEvidencia;
+    }
+
+    private String glbFotoVerEvidencia;
 
 
 

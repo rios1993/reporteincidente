@@ -2,6 +2,7 @@ package com.upc.reporteincidente;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -35,13 +37,13 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
 
     Button btnGrabarUbicacion;
 
-    Geocoder geocoder;
+    private Boolean permissionDenied = false;
+
+    //Geocoder geocoder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
 
         binding = ActivityMapaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -51,10 +53,24 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        getLocalizacion();
+
+
+
         latitud = ((Global) this.getApplication()).getGlbLatitud();
         longitud = ((Global) this.getApplication()).getGlbLongitud();
 
         asignarReferencias();
+    }
+
+    private void getLocalizacion() {
+        int permiso = ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION);
+        if(permiso == PackageManager.PERMISSION_DENIED){
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_FINE_LOCATION)){
+            }else{
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            }
+        }
     }
 
     private void asignarReferencias() {
@@ -88,6 +104,21 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+
+        mMap.setMyLocationEnabled(true);
+
+
+
         mMap.setOnMapLongClickListener(latLng -> {
             //Log.d("==>","Valores: "+latLng.toString());
 //            try{
@@ -105,9 +136,12 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
 //                e.printStackTrace();
 //            }
 //
+
+
+
             latitud = latLng.latitude;
             longitud = latLng.longitude;
-          mMap.addMarker(new MarkerOptions().position(latLng));
+          mMap.addMarker(new MarkerOptions().position(latLng).draggable(true).title(titulo));
 
 
         });
@@ -163,20 +197,13 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
+
+
         //latitud = upc.latitude;
         //longitud = upc.longitude;
 
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        mMap.setMyLocationEnabled(true);
+
+
 
 
 
