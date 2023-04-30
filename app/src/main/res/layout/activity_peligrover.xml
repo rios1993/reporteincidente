@@ -34,7 +34,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         android:text="Foto del peligro:"
         android:textStyle="bold"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:text="Foto"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -97,19 +97,18 @@
         android:id="@+id/txtUsuarioVer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="256dp"
+        android:layout_marginTop="250dp"
         android:text="Usuario"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/btnVerMapa" />
+        app:layout_constraintHorizontal_bias="0.358"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="Fecha de creacion:"
         android:textStyle="bold"
@@ -131,7 +130,7 @@
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="Estado:"
         android:textStyle="bold"
@@ -145,7 +144,7 @@
         android:layout_marginTop="20dp"
         android:text="Estado"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toEndOf="@+id/textView20"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
@@ -177,7 +176,7 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="Acciones:"
         android:textStyle="bold"
@@ -191,7 +190,7 @@
         android:layout_marginTop="20dp"
         android:text="Acciones"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
@@ -199,7 +198,7 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="Fecha en proceso:"
         android:textStyle="bold"
@@ -214,15 +213,15 @@
         android:layout_marginTop="20dp"
         android:text="Fecha en proceso"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.018"
-        app:layout_constraintStart_toEndOf="@+id/textView15"
+        app:layout_constraintHorizontal_bias="0.422"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:text="Fecha de atencion:"
         android:textStyle="bold"
@@ -236,7 +235,7 @@
         android:layout_marginTop="16dp"
         android:text="Fecha de atencion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
@@ -244,7 +243,7 @@
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
         android:text="Foto de evidencia:"
         android:textStyle="bold"
@@ -257,7 +256,7 @@
         android:layout_height="wrap_content"
         android:text="Foto de evidencia"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
@@ -265,7 +264,7 @@
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="44dp"
         android:text="Usuario que atendio:"
         android:textStyle="bold"
@@ -279,14 +278,14 @@
         android:layout_marginTop="44dp"
         android:text="Usuario que atendio"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintHorizontal_bias="0.007"
         app:layout_constraintStart_toEndOf="@+id/textView25"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <Button
         android:id="@+id/btnVerMapa"
         android:layout_width="118dp"
-        android:layout_height="37dp"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/loginbuttonshape"
         android:text="Ver mapa"
@@ -310,7 +309,7 @@
     <Button
         android:id="@+id/btnVerFoto"
         android:layout_width="116dp"
-        android:layout_height="38dp"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/loginbuttonshape"
         android:text="Ver Foto"
@@ -322,7 +321,7 @@
     <Button
         android:id="@+id/btnFotoVerEvidencia"
         android:layout_width="108dp"
-        android:layout_height="41dp"
+        android:layout_height="48dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/loginbuttonshape"
         android:text="Ver Foto"
