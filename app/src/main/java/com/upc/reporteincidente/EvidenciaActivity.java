@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -33,7 +34,7 @@ public class EvidenciaActivity extends AppCompatActivity {
     EditText txtAcciones,txtFechaAtencion;
     Button btnGrabarEvidencia, btnFotoEvidencia;
     RadioButton radioEnProceso, radioAtendido;
-
+    TextView txtIdReporte;
     RadioGroup radioGrupo;
 
     private String Globaluser, GlobalFotoEvidencia;
@@ -86,11 +87,21 @@ public class EvidenciaActivity extends AppCompatActivity {
     }
 
     private void cargarDatos(){
-        if(!Objects.equals(getIntent().getStringExtra("id_evidencia"), "0")){
+        if(!Objects.equals(getIntent().getStringExtra("id_reporte"), "0")){
             modificar=true;
             //id_mascota = Integer.parseInt(getIntent().getStringExtra("id_mascota"));
-            txtAcciones.setText(getIntent().getStringExtra("acciones"));
 
+            if (Objects.equals(getIntent().getStringExtra("acciones"), "null")) {
+
+                txtAcciones.setText("");
+                //Log.d("EEE1==>", getIntent().getStringExtra("fecha_atendido"));
+            }else {
+                txtAcciones.setText(getIntent().getStringExtra("acciones"));
+                //Log.d("EEE2==>", getIntent().getStringExtra("fecha_atendido"));
+            }
+
+            //txtAcciones.setText(getIntent().getStringExtra("acciones"));
+            txtIdReporte.setText(getIntent().getStringExtra("id_reporte"));
             estado = getIntent().getStringExtra("estado");
 
             //Log.d("MMM==>", estado);
@@ -132,7 +143,7 @@ public class EvidenciaActivity extends AppCompatActivity {
         radioEnProceso = findViewById(R.id.radioEnProceso);
         radioAtendido=findViewById(R.id.radioAtendido);
         radioGrupo=findViewById(R.id.radioGroup);
-
+        txtIdReporte = findViewById(R.id.txtIdReporte);
         btnFotoEvidencia.setOnClickListener(view -> {
             Intent intent = new Intent(this, CargarfotoActivity.class);
             startActivity(intent);
