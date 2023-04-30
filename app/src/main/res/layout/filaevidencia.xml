@@ -130,9 +130,10 @@
                 android:minHeight="48dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.157"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.422"
+                app:layout_constraintVertical_bias="0.811"
                 app:srcCompat="@drawable/baseline_construction_24"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -154,6 +155,18 @@
                 app:layout_constraintHorizontal_bias="0.27"
                 app:layout_constraintStart_toEndOf="@+id/textView11"
                 app:layout_constraintTop_toBottomOf="@+id/filaEstadoEvi" />
+
+            <ImageButton
+                android:id="@+id/filaEliminarEvi"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="284dp"
+                android:layout_marginTop="68dp"
+                android:minHeight="48dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:drawable/ic_menu_delete"
+                tools:ignore="SpeakableTextPresentCheck" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,7 +55,11 @@ public class MainActivity extends AppCompatActivity {
         btnResolver.setOnClickListener(view -> {
             if(privilegio.toString().equals("2")) {
                 Intent intentR = new Intent(this, ListarevidenciaActivity.class);
+                intentR.putExtra("usuario", usuario);
+                intentR.putExtra("fullname", fullname);
+                intentR.putExtra("privilegio", privilegio);
                 startActivity(intentR);
+
             }else{
                 Toast.makeText(this, "No tiene privilegios", Toast.LENGTH_SHORT).show();
             }

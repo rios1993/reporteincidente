@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,19 +27,35 @@ import java.util.List;
 public class ListarevidenciaActivity extends AppCompatActivity {
 
     RecyclerView rvListarEvi;
-
+    Button btnVolverEvi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listarevidencia);
 
         asignarReferencias();
+
     }
 
     private void asignarReferencias(){
 
         rvListarEvi = findViewById(R.id.rvListarEvi);
+        btnVolverEvi = findViewById(R.id.btnVolverEvi);
         cargarDatos();
+        Intent intent = getIntent();
+
+        String usuario = intent.getStringExtra("usuario");
+        String fullname = intent.getStringExtra("fullname");
+        String privilegio = intent.getStringExtra("privilegio");
+
+        btnVolverEvi.setOnClickListener(view -> {
+            Intent intentM = new Intent(this, MainActivity.class);
+            intentM.putExtra("usuario", usuario);
+            intentM.putExtra("fullname", fullname);
+            intentM.putExtra("privilegio", privilegio);
+            startActivity(intentM);
+
+        });
     }
 
     private void cargarDatos(){

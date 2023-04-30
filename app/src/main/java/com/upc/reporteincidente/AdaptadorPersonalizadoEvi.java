@@ -2,15 +2,24 @@ package com.upc.reporteincidente;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +75,36 @@ public class AdaptadorPersonalizadoEvi extends RecyclerView.Adapter<AdaptadorPer
             context.startActivity(intent);
         });
 
+        holder.filaEliminarEvi.setOnClickListener(view -> {
+            confirmar(position);
+        });
+    }
 
+    private void confirmar(int position) {
+        int idEliminar = listaReportes.get(position).getId_reporte();
+        AlertDialog.Builder ventana = new AlertDialog.Builder(context);
+        ventana.setTitle("Eliminar");
+        ventana.setMessage("¿Desea eliminar el reporte?");
+        ventana.setPositiveButton("Aceptar",(dialogInterface, i) ->
+        {
+            String url = "https://upcmovilestf.zonaexperimental.com/index.php/peligro"+idEliminar;
+            StringRequest peticion = new StringRequest(Request.Method.DELETE, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    mostrarMensaje("Reporte eliminado correctamente.");
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d("==>",error.toString());
+                }
+            });
+
+            RequestQueue cola = Volley.newRequestQueue(context);
+            cola.add(peticion);
+        });
+        ventana.setNegativeButton("NO",null);
+        ventana.create().show();
     }
 
 
@@ -76,20 +114,20 @@ public class AdaptadorPersonalizadoEvi extends RecyclerView.Adapter<AdaptadorPer
         //return 0;
     }
 
-    //private void mostrarMensaje(String mensaje){
-    //    AlertDialog.Builder ventana = new AlertDialog.Builder(context);
-    //    ventana.setTitle("Mensaje Informativo");
-    //    ventana.setMessage(mensaje);
-    //    ventana.setPositiveButton("Aceptar",(dialogInterface, i) -> {
-    //        Intent intent = new Intent(context,ListarActivity.class);
-    //        context.startActivity(intent);
-    //    });
-    //    ventana.create().show();
-    //}
+    private void mostrarMensaje(String mensaje){
+        AlertDialog.Builder ventana = new AlertDialog.Builder(context);
+        ventana.setTitle("Mensaje Informativo");
+        ventana.setMessage(mensaje);
+        ventana.setPositiveButton("Aceptar",(dialogInterface, i) -> {
+            Intent intent = new Intent(context,ListarevidenciaActivity.class);
+            context.startActivity(intent);
+        });
+        ventana.create().show();
+    }
 
     public class MiViewHolder extends RecyclerView.ViewHolder {
         TextView filaReporteEvi, filaDetalleEvi, filaUsuarioEvi, filaFechayHoraEvi, filaEstadoEvi;
-        ImageButton filaVerEvi;
+        ImageButton filaVerEvi, filaEliminarEvi;
         public MiViewHolder(@NonNull View itemView) {
             super(itemView);
             filaReporteEvi = itemView.findViewById(R.id.filaReporteEvi);
@@ -98,7 +136,7 @@ public class AdaptadorPersonalizadoEvi extends RecyclerView.Adapter<AdaptadorPer
             filaFechayHoraEvi = itemView.findViewById(R.id.filaFechayHoraEvi);
             filaEstadoEvi = itemView.findViewById(R.id.filaEstadoEvi);
             filaVerEvi = itemView.findViewById(R.id.filaVerEvi);
-
+            filaEliminarEvi = itemView.findViewById(R.id.filaEliminarEvi);
         }
     }
 }
