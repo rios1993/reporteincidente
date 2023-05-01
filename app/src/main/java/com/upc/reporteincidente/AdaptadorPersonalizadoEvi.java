@@ -29,10 +29,14 @@ public class AdaptadorPersonalizadoEvi extends RecyclerView.Adapter<AdaptadorPer
     private Context context;
     private List<Reportes> listaReportes = new ArrayList<>();
 
+    private String username,fullname,privilegio;
 
-    public AdaptadorPersonalizadoEvi(Context context, List<Reportes> listaReportes){
+    public AdaptadorPersonalizadoEvi(Context context, List<Reportes> listaReportes,String username,String fullname,String privilegio){
         this.context = context;
         this.listaReportes = listaReportes;
+        this.username = username;
+        this.fullname = fullname;
+        this.privilegio = privilegio;
     }
 
 
@@ -82,29 +86,40 @@ public class AdaptadorPersonalizadoEvi extends RecyclerView.Adapter<AdaptadorPer
 
     private void confirmar(int position) {
         int idEliminar = listaReportes.get(position).getId_reporte();
-        AlertDialog.Builder ventana = new AlertDialog.Builder(context);
-        ventana.setTitle("Eliminar");
-        ventana.setMessage("¿Desea eliminar el reporte?");
-        ventana.setPositiveButton("Aceptar",(dialogInterface, i) ->
-        {
-            String url = "https://upcmovilestf.zonaexperimental.com/index.php/peligro"+idEliminar;
-            StringRequest peticion = new StringRequest(Request.Method.DELETE, url, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    mostrarMensaje("Reporte eliminado correctamente.");
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.d("==>",error.toString());
-                }
-            });
+        String estado = listaReportes.get(position).getDescripcion();
 
-            RequestQueue cola = Volley.newRequestQueue(context);
-            cola.add(peticion);
-        });
-        ventana.setNegativeButton("NO",null);
-        ventana.create().show();
+        if(estado == "Reportado")
+        {
+            AlertDialog.Builder ventana = new AlertDialog.Builder(context);
+            ventana.setTitle("Eliminar");
+            ventana.setMessage("¿Desea eliminar el reporte?");
+            ventana.setPositiveButton("Aceptar",(dialogInterface, i) ->
+            {
+                String url = "https://upcmovilestf.zonaexperimental.com/index.php/peligro"+idEliminar;
+                StringRequest peticion = new StringRequest(Request.Method.DELETE, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        mostrarMensaje("Reporte eliminado correctamente.");
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("==>",error.toString());
+                    }
+                });
+
+                RequestQueue cola = Volley.newRequestQueue(context);
+                cola.add(peticion);
+            });
+            ventana.setNegativeButton("NO",null);
+            ventana.create().show();
+        }
+        else
+        {
+            mostrarMensaje("Solo se pueden eliminar reportes en estado Reportado.");
+        }
+
+
     }
 
 
@@ -120,6 +135,9 @@ public class AdaptadorPersonalizadoEvi extends RecyclerView.Adapter<AdaptadorPer
         ventana.setMessage(mensaje);
         ventana.setPositiveButton("Aceptar",(dialogInterface, i) -> {
             Intent intent = new Intent(context,ListarevidenciaActivity.class);
+            intent.putExtra("usuario", username);
+            intent.putExtra("fullname", fullname);
+            intent.putExtra("privilegio", privilegio);
             context.startActivity(intent);
         });
         ventana.create().show();

@@ -91,7 +91,7 @@ public class EvidenciaActivity extends AppCompatActivity {
             modificar=true;
             //id_mascota = Integer.parseInt(getIntent().getStringExtra("id_mascota"));
             txtAcciones.setText(getIntent().getStringExtra("acciones"));
-
+            txtIdReporte.setText(getIntent().getStringExtra("id_reporte"));
             estado = getIntent().getStringExtra("estado");
 
             //Log.d("MMM==>", estado);
@@ -133,7 +133,7 @@ public class EvidenciaActivity extends AppCompatActivity {
         radioEnProceso = findViewById(R.id.radioEnProceso);
         radioAtendido=findViewById(R.id.radioAtendido);
         radioGrupo=findViewById(R.id.radioGroup);
-        //txtIdReporte = findViewById(R.id.txtIdReporte);
+        txtIdReporte = findViewById(R.id.txtIdReporte);
         btnFotoEvidencia.setOnClickListener(view -> {
             Intent intent = new Intent(this, CargarfotoActivity.class);
             startActivity(intent);

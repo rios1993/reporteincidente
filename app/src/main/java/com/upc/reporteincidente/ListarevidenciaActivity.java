@@ -28,6 +28,7 @@ public class ListarevidenciaActivity extends AppCompatActivity {
 
     RecyclerView rvListarEvi;
     Button btnVolverEvi;
+    String usuario,fullname,privilegio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +45,9 @@ public class ListarevidenciaActivity extends AppCompatActivity {
         cargarDatos();
         Intent intent = getIntent();
 
-        String usuario = intent.getStringExtra("usuario");
-        String fullname = intent.getStringExtra("fullname");
-        String privilegio = intent.getStringExtra("privilegio");
+        usuario = intent.getStringExtra("usuario");
+        fullname = intent.getStringExtra("fullname");
+        privilegio = intent.getStringExtra("privilegio");
 
         btnVolverEvi.setOnClickListener(view -> {
             Intent intentM = new Intent(this, MainActivity.class);
@@ -87,8 +88,9 @@ public class ListarevidenciaActivity extends AppCompatActivity {
                                 object.getString("username_evidencia")));
 
                     }
+
                     AdaptadorPersonalizadoEvi adaptador;
-                    adaptador = new AdaptadorPersonalizadoEvi(ListarevidenciaActivity.this,listaReportes);
+                    adaptador = new AdaptadorPersonalizadoEvi(ListarevidenciaActivity.this,listaReportes,usuario,fullname,privilegio);
                     rvListarEvi.setAdapter(adaptador);
                     rvListarEvi.setLayoutManager(new LinearLayoutManager(ListarevidenciaActivity.this));
 

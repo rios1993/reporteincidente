@@ -79,7 +79,9 @@ public class LoginActivity extends AppCompatActivity {
                                 String globalUsuario = object.getString("username");
                                 String globalFullName = object.getString("fullname");
                                 String globalPrivilegio = object.getString("privilegio");
-
+                                ((Global) LoginActivity.this.getApplication()).setGlbUsername(globalUsuario);
+                                ((Global) LoginActivity.this.getApplication()).setGlbFullName(globalFullName);
+                                ((Global) LoginActivity.this.getApplication()).setGlbPrivilegio(globalPrivilegio);
 
                                 Toast.makeText(LoginActivity.this, "Inicio de sesión exitosa", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
@@ -96,6 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.putExtra("usuario",globalUsuario);
                                 intent.putExtra("fullname",globalFullName);
                                 intent.putExtra("privilegio",globalPrivilegio);
+
 
                                 startActivity(intent);
                                 finish();

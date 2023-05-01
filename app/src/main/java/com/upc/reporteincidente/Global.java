@@ -5,6 +5,16 @@ import android.app.Application;
 public class Global extends Application {
 
     private String glbUsername;
+    private String glbFullName;
+
+    public String getGlbFullName() {
+        return glbFullName;
+    }
+
+    public void setGlbFullName(String glbFullName) {
+        this.glbFullName = glbFullName;
+    }
+
     private String glbPrivilegio;
 
     public String getGlbFotoReporte() {
