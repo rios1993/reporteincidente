@@ -43,22 +43,22 @@
 
     <TextView
         android:id="@+id/txtDetalleVer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="374dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="8dp"
         android:text="Detalle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/txtFotoVer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="257dp"
+        android:layout_height="18dp"
         android:text="Foto"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintHorizontal_bias="0.129"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -66,6 +66,7 @@
         android:id="@+id/txtLatitudVer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="36dp"
         android:text="Latitud"
         app:layout_constraintStart_toEndOf="@+id/textView7"
@@ -95,12 +96,12 @@
 
     <TextView
         android:id="@+id/txtUsuarioVer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
+        android:layout_width="97dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="260dp"
         android:text="Usuario"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.358"
+        app:layout_constraintHorizontal_bias="0.429"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -117,8 +118,8 @@
 
     <TextView
         android:id="@+id/txtFechaVer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="224dp"
+        android:layout_height="21dp"
         android:layout_marginTop="20dp"
         android:text="Fecha de creacion"
         app:layout_constraintEnd_toEndOf="parent"
@@ -185,8 +186,8 @@
 
     <TextView
         android:id="@+id/txtAccionesVer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="311dp"
+        android:layout_height="24dp"
         android:layout_marginTop="20dp"
         android:text="Acciones"
         app:layout_constraintEnd_toEndOf="parent"
@@ -207,13 +208,13 @@
 
     <TextView
         android:id="@+id/txtFechaProceso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="248dp"
+        android:layout_height="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:text="Fecha en proceso"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.422"
+        app:layout_constraintHorizontal_bias="0.897"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -230,12 +231,12 @@
 
     <TextView
         android:id="@+id/txtFechaAtencion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="166dp"
+        android:layout_height="19dp"
         android:layout_marginTop="16dp"
         android:text="Fecha de atencion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toEndOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
@@ -252,11 +253,11 @@
 
     <TextView
         android:id="@+id/txtFotoEvidencia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="253dp"
+        android:layout_height="26dp"
         android:text="Foto de evidencia"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintHorizontal_bias="0.124"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
@@ -290,33 +291,33 @@
         android:background="@drawable/loginbuttonshape"
         android:text="Ver mapa"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.631"
-        app:layout_constraintStart_toEndOf="@+id/txtLongitudVer"
+        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/btnVerFoto" />
 
     <Button
         android:id="@+id/btnRegresarVer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/loginbuttonshape"
         android:text="Regresar"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/loginbuttonshape"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUsuarioEvidencia" />
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
     <Button
         android:id="@+id/btnVerFoto"
         android:layout_width="116dp"
         android:layout_height="48dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="48dp"
         android:background="@drawable/loginbuttonshape"
         android:text="Ver Foto"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/txtDetalleVer" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
         android:id="@+id/btnFotoVerEvidencia"
@@ -326,8 +327,8 @@
         android:background="@drawable/loginbuttonshape"
         android:text="Ver Foto"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.903"
-        app:layout_constraintStart_toEndOf="@+id/txtFotoEvidencia"
-        app:layout_constraintTop_toBottomOf="@+id/txtFechaAtencion" />
+        app:layout_constraintHorizontal_bias="0.898"
+        app:layout_constraintStart_toEndOf="@+id/textView23"
+        app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
