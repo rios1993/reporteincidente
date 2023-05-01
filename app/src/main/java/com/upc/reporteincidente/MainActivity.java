@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         String fullname = intent.getStringExtra("fullname");
         String privilegio = intent.getStringExtra("privilegio");
 
-        ((Global) this.getApplication()).setGlbUsername(usuario);
-        ((Global) this.getApplication()).setGlbPrivilegio(privilegio);
+        //((Global) this.getApplication()).setGlbUsername(usuario);
+        //((Global) this.getApplication()).setGlbPrivilegio(privilegio);
 
         txtFullname.setText(fullname);
 

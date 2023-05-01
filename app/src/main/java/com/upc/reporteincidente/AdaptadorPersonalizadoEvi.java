@@ -88,7 +88,7 @@ public class AdaptadorPersonalizadoEvi extends RecyclerView.Adapter<AdaptadorPer
         int idEliminar = listaReportes.get(position).getId_reporte();
         String estado = listaReportes.get(position).getDescripcion();
 
-        if(estado == "Reportado")
+        if(estado.equals("Reportado"))
         {
             AlertDialog.Builder ventana = new AlertDialog.Builder(context);
             ventana.setTitle("Eliminar");
